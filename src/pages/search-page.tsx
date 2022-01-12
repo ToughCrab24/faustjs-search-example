@@ -4,11 +4,12 @@ import { Footer, Header, Hero, Posts } from "components";
 import SearchForm from "components/SearchForm";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-  // const router = useRouter();
-  // const { search } = router.query;
+  const router = useRouter();
+
   const { useQuery, useLazyQuery } = client;
   const { generalSettings } = useQuery({
     onError: (e) => {
@@ -43,6 +44,16 @@ export default function Page() {
       args: searchTerm,
     });
   };
+
+  useEffect(() => {
+    const { search } = router.query;
+
+    if (!isLoading && search && !resultPosts) {
+      setSearchTerm(search.toString());
+      searchPosts({ args: search.toString() });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.query, resultPosts]);
 
   return (
     <>

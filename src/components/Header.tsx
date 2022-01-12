@@ -2,8 +2,6 @@ import React from "react";
 import styles from "scss/components/Header.module.scss";
 import Link from "next/link";
 import { client, MenuLocationEnum } from "client";
-import { Search } from "components";
-import SearchForm from "./SearchForm";
 
 interface Props {
   title?: string;

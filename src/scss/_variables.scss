@@ -1,4 +1,11 @@
-$color-primary: #0070f3;
+$color-primary: #11998e;
+$color-secondary: #38ef7d;
+$color-thrid: #11998eaa;
+$color-primary-to-secondary: linear-gradient(
+  to right,
+  $color-primary,
+  $color-secondary
+);
 $color-black: #000;
 $color-white: #fff;
 $color-dark-gray: #1f1f1f;
